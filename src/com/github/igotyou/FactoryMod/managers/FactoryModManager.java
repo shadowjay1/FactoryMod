@@ -47,7 +47,6 @@ public class FactoryModManager
 		
 		initializeManagers();
 		loadManagers();
-		
 		periodicSaving();
 	}
 	
@@ -185,7 +184,7 @@ public class FactoryModManager
 	}
 	
 	/**
-	 * Save OreGins to file every SAVE_CYCLE minutes.
+	 * Save Factories to file every SAVE_CYCLE minutes.
 	 */
 	private void periodicSaving()
 	{
@@ -200,7 +199,7 @@ public class FactoryModManager
 	}
 	
 	/**
-	 * Returns the OreGin Saves file
+	 * Returns the Factory Saves file
 	 */
 	public File getSavesFile(String fileName)
 	{
@@ -221,6 +220,22 @@ public class FactoryModManager
 		}	
 		return false;
 	}
+
+	/**
+	 * Returns whether a factory is whole at given location in any manager
+	 */
+	public boolean factoryWholeAt(Location location)
+	{
+		for (Manager manager : managers)
+		{
+			if (manager.factoryWholeAt(location))
+			{
+				return true;
+			}
+		}	
+		return false;
+	}	
+	
 
 	public ProductionManager getProductionManager() 
 	{
